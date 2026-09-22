@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "adk web agents",
-    "dev:drupal-agents": "adk web drupal-agents"
+    "dev": "adk web agents --compile false",
+    "dev:drupal-agents": "adk web drupal-agents --compile false"
   },
   "dependencies": {
     "@drupalmcp/adk": "^0.1.1",
