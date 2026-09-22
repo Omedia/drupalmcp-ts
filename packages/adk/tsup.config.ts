@@ -6,8 +6,8 @@ export default defineConfig({
   dts: true,
   clean: true,
   target: 'node24',
-  // One file, no shared chunks: consumers get bundled by tools that resolve
-  // relative imports from wherever they copy the package to, and a split
-  // build breaks there for no benefit at this size.
   splitting: false,
+  // Subpath imports of a declared dependency are not matched by tsup's
+  // default external list, so the whole protocol SDK was being inlined.
+  external: [/^@modelcontextprotocol\/sdk/, /^@google\//],
 });
