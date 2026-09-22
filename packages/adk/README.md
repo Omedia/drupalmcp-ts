@@ -69,9 +69,16 @@ every turn.
 
 ```ts
 drupalTools({ auth, only: ['tool_api__tool_belt_entity_list'] });
+drupalTools({ auth, except: ['tool_api__tool_belt_entity_bundle_list'] });
 ```
 
-`only` narrows the tool list. It is a convenience, not a boundary: what the
-agent may actually do is decided by the credential's scopes on the server.
+`only` narrows the tool list and `except` removes from it. Both are a
+convenience, not a boundary: what the agent may actually do is decided by the
+credential's scopes on the server.
+
+`except` earns its keep for a tool the site publishes that this credential can
+never run. Listing a content type's bundles, for instance, needs an
+administrator permission an agent should not have, so offering the tool only
+invites a refusal in the middle of a job.
 
 Apache-2.0. Part of [drupalmcp-ts](https://github.com/Omedia/drupalmcp-ts).

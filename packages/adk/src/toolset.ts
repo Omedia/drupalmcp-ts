@@ -20,6 +20,12 @@ export interface DrupalToolsOptions {
    * site publishes; the credential's scopes still decide what may run.
    */
   only?: string[];
+  /**
+   * Leave these tools out. Useful for a tool the site publishes but this
+   * credential can never run, such as one that needs an administrator
+   * permission: offering it only invites a refusal mid-conversation.
+   */
+  except?: string[];
   /** Prefix added to every tool name, for telling two sites apart. */
   prefix?: string;
 }
@@ -33,7 +39,7 @@ export interface DrupalToolsOptions {
  * {@link normaliseSchema}.
  */
 export function drupalTools(options: DrupalToolsOptions): MCPToolset {
-  const { auth, only, prefix } = options;
+  const { auth, only, except, prefix } = options;
   const baseUrl = (options.baseUrl ?? auth.baseUrl).replace(/\/+$/, '');
 
   // The MCP client reports a refused call as an error string built from the
@@ -60,7 +66,7 @@ export function drupalTools(options: DrupalToolsOptions): MCPToolset {
         },
       },
     },
-    only,
+    toolFilter(only, except),
     prefix,
   );
 
@@ -107,6 +113,20 @@ function prepareTools(toolset: MCPToolset, lastChallenge: { value: string | null
   };
 
   return toolset;
+}
+
+/**
+ * Turns `only` and `except` into the predicate MCPToolset expects.
+ *
+ * With neither, every tool the site publishes is offered.
+ */
+function toolFilter(only?: string[], except?: string[]): ((tool: { name: string }) => boolean) | string[] | undefined {
+  if (!except?.length) {
+    return only;
+  }
+  const blocked = new Set(except);
+  const wanted = only ? new Set(only) : null;
+  return (tool: { name: string }) => !blocked.has(tool.name) && (wanted === null || wanted.has(tool.name));
 }
 
 /** Names the missing scope in a message that had to guess without it. */
