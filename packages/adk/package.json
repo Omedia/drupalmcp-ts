@@ -1,6 +1,6 @@
 {
   "name": "@drupalmcp/adk",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Use a Drupal site from a Google ADK agent: OAuth, scoped MCP tools, and agents defined in Drupal.",
   "license": "Apache-2.0",
   "type": "module",

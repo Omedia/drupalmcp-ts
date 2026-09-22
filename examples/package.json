@@ -7,7 +7,7 @@
     "dev:drupal-agents": "adk web drupal-agents --compile false"
   },
   "dependencies": {
-    "@drupalmcp/adk": "^0.1.1",
+    "@drupalmcp/adk": "^0.2.0",
     "@google/adk": "^2.1.0",
     "@google/adk-devtools": "^2.1.0"
   }

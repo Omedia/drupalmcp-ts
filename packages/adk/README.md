@@ -37,9 +37,16 @@ unreachable. `drupalTools()` rewrites both on the way through. You can use
 the rewrite on its own with `normaliseSchema()`.
 
 **Explains a refusal.** A call the credential may not make comes back as
-HTTP 403 with a challenge naming the missing scope. The MCP client drops
-that header, so the library keeps it and gives the model a sentence that
-says what happened and that retrying will not help.
+HTTP 403 with a challenge naming the missing scope. That header is dropped
+before the error reaches you, so the library keeps it and gives the model a
+sentence that says what happened and that retrying will not help.
+
+**Resolves its dependencies once, at import.** The tools are built on the
+protocol SDK directly rather than on the agent kit's own MCP toolset, which
+looks the SDK up lazily at the first tool call from whatever directory it
+happens to be running in. That lookup fails inside the dev server's temporary
+build folder, reporting a missing dependency that is sitting in
+`node_modules`. Importing at the top of the file cannot fail that way.
 
 ## Agents defined in Drupal
 

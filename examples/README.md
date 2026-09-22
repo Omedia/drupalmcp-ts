@@ -31,9 +31,7 @@ in `.env`. Without those it will refuse to load and tell you so.
 
 ## Why the scripts pass `--compile false`
 
-By default the dev server transpiles each agent into a temporary directory and
-symlinks your `node_modules` next to it. When that link is not made, every
-tool call fails claiming `@modelcontextprotocol/sdk` is not installed, even
-though it is sitting right there. Loading the TypeScript in place avoids the
-temporary directory altogether, and Node has stripped types natively since
-22.18, so nothing is lost.
+By default the dev server transpiles each agent into a temporary directory
+before running it. Loading the TypeScript in place skips that step, which is
+one less moving part and a faster start. Node has stripped types natively
+since 22.18, so nothing is lost either way.
