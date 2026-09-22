@@ -1,9 +1,12 @@
 # drupalmcp-ts
 
-TypeScript libraries for using a Drupal site from an AI agent, over the
-Model Context Protocol. The site side is the Drupal module
-[`drupal/mcp`](https://www.drupal.org/project/mcp); this repository is the
-client side.
+Build a [Google ADK](https://adk.dev) agent that works on a Drupal site.
+
+The site side is the Drupal module
+[`drupal/mcp`](https://www.drupal.org/project/mcp), which publishes a site's
+tools over the Model Context Protocol and decides what each credential may
+do. This repository is the client side, in TypeScript: the same libraries
+will follow for Python, Go and Java.
 
 | Package | What it is |
 |---|---|
