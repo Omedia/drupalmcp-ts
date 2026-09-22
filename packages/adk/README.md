@@ -65,6 +65,11 @@ is how a tone-of-voice rule reaches an agent running outside Drupal.
 long a definition is reused; it defaults to ten seconds and zero re-reads
 every turn.
 
+If the site has no such agent, the call refuses and says where to look rather
+than failing obscurely. Keep these agents in their own folder: the ADK dev
+server loads every agent in the directory you point it at, and one that cannot
+reach its definition will report that at startup.
+
 ## Choosing what the agent can reach
 
 ```ts
