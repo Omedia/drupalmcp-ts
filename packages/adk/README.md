@@ -41,6 +41,30 @@ HTTP 403 with a challenge naming the missing scope. The MCP client drops
 that header, so the library keeps it and gives the model a sentence that
 says what happened and that retrying will not help.
 
+## Agents defined in Drupal
+
+If the site has the [MCP Agents](https://www.drupal.org/project/mcp) module,
+an agent's instructions can live in Drupal rather than in this file:
+
+```ts
+import { DrupalOAuth, drupalAgent } from '@drupalmcp/adk';
+
+export const rootAgent = await drupalAgent({
+  auth: DrupalOAuth.fromEnv(),
+  id: 'site_editor',
+});
+```
+
+The definition is read again on every turn, so editing the prompt at
+Configuration → AI → Tools and automation → Agents changes the next answer
+with nothing restarted. If the site also runs the Context Control Center,
+whatever context it selects for that agent is appended under a heading, which
+is how a tone-of-voice rule reaches an agent running outside Drupal.
+
+`listAgents(auth)` returns what the site publishes. `cacheMs` controls how
+long a definition is reused; it defaults to ten seconds and zero re-reads
+every turn.
+
 ## Choosing what the agent can reach
 
 ```ts

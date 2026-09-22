@@ -17,6 +17,14 @@
 
 export { DrupalOAuth, type DrupalOAuthOptions } from './auth.js';
 export { drupalTools, type DrupalToolsOptions } from './toolset.js';
+export {
+  drupalAgent,
+  listAgents,
+  promptFrom,
+  type AgentDefinition,
+  type AgentSummary,
+  type DrupalAgentOptions,
+} from './agents.js';
 export { normaliseSchema, type JsonSchema } from './schema.js';
 export {
   describeRefusal,
