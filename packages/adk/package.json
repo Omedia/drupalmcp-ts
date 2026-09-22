@@ -1,0 +1,30 @@
+{
+  "name": "@drupalmcp/adk",
+  "version": "0.1.0-alpha.1",
+  "description": "Use a Drupal site from a Google ADK agent: OAuth, scoped MCP tools, and agents defined in Drupal.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": { "node": ">=24.13.0" },
+  "repository": { "type": "git", "url": "git+https://github.com/Omedia/drupalmcp-ts.git", "directory": "packages/adk" },
+  "homepage": "https://drupalmcp.io",
+  "keywords": ["drupal", "mcp", "adk", "agent", "ai", "model-context-protocol"],
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:live": "DRUPALMCP_LIVE=1 vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0"
+  },
+  "peerDependencies": {
+    "@google/adk": "^2.0.0"
+  },
+  "devDependencies": {
+    "@google/adk": "^2.1.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

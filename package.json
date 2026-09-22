@@ -1,0 +1,24 @@
+{
+  "name": "drupalmcp-ts",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "examples"
+  ],
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "eslint .",
+    "check": "npm run lint && npm run build && npm run test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}

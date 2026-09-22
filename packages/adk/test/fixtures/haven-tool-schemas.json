@@ -1,0 +1,416 @@
+{
+    "tool_api__mcp_publish_content": {
+        "type": "object",
+        "properties": {
+            "entity_type": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "default": "node",
+                "description": "Entity type: Content entity type id, e.g. \"node\" (default), \"media\", \"taxonomy_term\".",
+                "title": "Entity type"
+            },
+            "id": {
+                "type": "string",
+                "description": "Entity ID: The entity id to publish, e.g. the node id.",
+                "title": "Entity ID"
+            },
+            "publish": {
+                "oneOf": [
+                    {
+                        "type": "boolean"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "default": true,
+                "description": "Publish: true (default) publishes, false unpublishes.",
+                "title": "Publish"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "id"
+        ]
+    },
+    "tool_api__tool_belt_entity_bundle_field_definitions": {
+        "type": "object",
+        "properties": {
+            "entity_type_id": {
+                "type": "string",
+                "description": "Entity Type ID: The entity type ID (e.g., node, user, taxonomy_term).",
+                "title": "Entity Type ID"
+            },
+            "bundle": {
+                "type": "string",
+                "description": "Bundle: The bundle name (e.g., article, page for nodes).",
+                "title": "Bundle"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity_type_id",
+            "bundle"
+        ]
+    },
+    "tool_api__tool_belt_entity_bundle_list": {
+        "type": "object",
+        "properties": {
+            "entity_type_id": {
+                "type": "string",
+                "enum": [
+                    "canvas_page",
+                    "consumer",
+                    "content_moderation_state",
+                    "crop",
+                    "easy_email",
+                    "file",
+                    "media",
+                    "menu_link_content",
+                    "node",
+                    "path_alias",
+                    "redirect",
+                    "search_api_task",
+                    "oauth2_token",
+                    "taxonomy_term",
+                    "user",
+                    "webform_submission"
+                ],
+                "description": "Entity Type ID: The machine name of the entity type.",
+                "title": "Entity Type ID"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity_type_id"
+        ]
+    },
+    "tool_api__tool_belt_entity_field_value_definitions": {
+        "type": "object",
+        "properties": {
+            "entity_type_id": {
+                "type": "string",
+                "description": "Entity Type ID: The entity type ID (e.g., node, user, taxonomy_term).",
+                "title": "Entity Type ID"
+            },
+            "bundle": {
+                "type": "string",
+                "description": "Bundle: The bundle name (e.g., article, page for nodes).",
+                "title": "Bundle"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity_type_id",
+            "bundle"
+        ]
+    },
+    "tool_api__tool_belt_entity_field_values": {
+        "type": "object",
+        "properties": {
+            "entity": {
+                "$comment": "No schema is defined for property of type Drupal\\Core\\Entity\\Plugin\\DataType\\EntityAdapter. See https://www.drupal.org/node/3424710 for information on implementing schemas in your program code.",
+                "description": "Entity: The entity to get field values from.",
+                "title": "Entity"
+            },
+            "fields": {
+                "type": [
+                    "array",
+                    "null"
+                ],
+                "items": {
+                    "type": "string",
+                    "description": "Fields: Array of field names to retrieve. Leave empty to get all fields.",
+                    "title": "Fields"
+                },
+                "description": "Array of Fields",
+                "title": "Fields"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity"
+        ]
+    },
+    "tool_api__tool_belt_entity_list": {
+        "type": "object",
+        "properties": {
+            "entity_type_id": {
+                "type": "string",
+                "enum": [
+                    "canvas_page",
+                    "consumer",
+                    "content_moderation_state",
+                    "crop",
+                    "easy_email",
+                    "file",
+                    "media",
+                    "menu_link_content",
+                    "node",
+                    "path_alias",
+                    "redirect",
+                    "search_api_task",
+                    "oauth2_token",
+                    "taxonomy_term",
+                    "user",
+                    "webform_submission"
+                ],
+                "description": "Entity Type ID: The machine name of the entity type to filter entities by.",
+                "title": "Entity Type ID"
+            },
+            "bundle": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "description": "Bundle: The name of the bundle type to filter entities by.",
+                "title": "Bundle"
+            },
+            "amount": {
+                "oneOf": [
+                    {
+                        "type": "integer"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "default": 10,
+                "description": "Amount: The amount of entities to fetch. 0 means all.",
+                "title": "Amount"
+            },
+            "offset": {
+                "oneOf": [
+                    {
+                        "type": "integer"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "description": "Offset: The offset of entities to fetch.",
+                "title": "Offset"
+            },
+            "fields": {
+                "type": [
+                    "array",
+                    "null"
+                ],
+                "items": {
+                    "type": "string",
+                    "description": "Fields: The fields to include in the output. Leave empty to include title, id, and bundle.",
+                    "title": "Fields"
+                },
+                "description": "Array of Fields",
+                "title": "Fields"
+            },
+            "sort_field": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "description": "Sort Field: The field to sort by.",
+                "title": "Sort Field"
+            },
+            "sort_order": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "default": "DESC",
+                "enum": [
+                    "ASC",
+                    "DESC"
+                ],
+                "description": "Sort Order: The sort order (ASC or DESC).",
+                "title": "Sort Order"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity_type_id"
+        ]
+    },
+    "tool_api__tool_belt_entity_load_by_id": {
+        "type": "object",
+        "properties": {
+            "entity_type_id": {
+                "type": "string",
+                "enum": [
+                    "canvas_page",
+                    "consumer",
+                    "content_moderation_state",
+                    "crop",
+                    "easy_email",
+                    "file",
+                    "media",
+                    "menu_link_content",
+                    "node",
+                    "path_alias",
+                    "redirect",
+                    "search_api_task",
+                    "oauth2_token",
+                    "taxonomy_term",
+                    "user",
+                    "webform_submission"
+                ],
+                "description": "Entity Type ID: The entity type machine name (e.g., node, user, taxonomy_term).",
+                "title": "Entity Type ID"
+            },
+            "entity_id": {
+                "type": "integer",
+                "description": "Entity ID: The numeric ID of the entity to load.",
+                "title": "Entity ID"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity_type_id",
+            "entity_id"
+        ]
+    },
+    "tool_api__tool_belt_entity_revision_add": {
+        "type": "object",
+        "properties": {
+            "entity": {
+                "$comment": "No schema is defined for property of type Drupal\\Core\\Entity\\Plugin\\DataType\\EntityAdapter. See https://www.drupal.org/node/3424710 for information on implementing schemas in your program code.",
+                "description": "Entity: The entity to create a new revision for.",
+                "title": "Entity"
+            },
+            "revision_log": {
+                "oneOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "description": "Revision Log Message: Description of the changes made in this revision.",
+                "title": "Revision Log Message"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity"
+        ]
+    },
+    "tool_api__tool_belt_entity_save": {
+        "type": "object",
+        "properties": {
+            "entity": {
+                "$comment": "No schema is defined for property of type Drupal\\Core\\Entity\\Plugin\\DataType\\EntityAdapter. See https://www.drupal.org/node/3424710 for information on implementing schemas in your program code.",
+                "description": "Entity: The entity to save.",
+                "title": "Entity"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity"
+        ]
+    },
+    "tool_api__tool_belt_entity_stub": {
+        "type": "object",
+        "properties": {
+            "entity_type_id": {
+                "type": "string",
+                "enum": [
+                    "canvas_page",
+                    "consumer",
+                    "content_moderation_state",
+                    "crop",
+                    "easy_email",
+                    "file",
+                    "media",
+                    "menu_link_content",
+                    "node",
+                    "path_alias",
+                    "redirect",
+                    "search_api_task",
+                    "oauth2_token",
+                    "taxonomy_term",
+                    "user",
+                    "webform_submission"
+                ],
+                "description": "Entity Type ID: The machine name of the entity type to create.",
+                "title": "Entity Type ID"
+            },
+            "bundle": {
+                "type": "string",
+                "description": "Bundle: The bundle of the entity to create.",
+                "title": "Bundle"
+            },
+            "base_fields": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "properties": {},
+                "description": "Entity Base Fields: An associative array of base field values to set on the new entity.",
+                "title": "Entity Base Fields"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity_type_id",
+            "bundle"
+        ]
+    },
+    "tool_api__tool_belt_entity_type_list": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+    },
+    "tool_api__tool_belt_field_set_value": {
+        "type": "object",
+        "properties": {
+            "entity": {
+                "$comment": "No schema is defined for property of type Drupal\\Core\\Entity\\Plugin\\DataType\\EntityAdapter. See https://www.drupal.org/node/3424710 for information on implementing schemas in your program code.",
+                "description": "Entity: The entity to modify.",
+                "title": "Entity"
+            },
+            "field_name": {
+                "type": "string",
+                "description": "Field Name: The machine name of the field to set.",
+                "title": "Field Name"
+            },
+            "value": {
+                "type": [
+                    "array",
+                    "null"
+                ],
+                "items": {
+                    "type": "object",
+                    "properties": {},
+                    "description": "Value: The values to set for the field, as an array holding one value object per field item. A single-value field takes a one-item array. Each item should follow the field definition schema.",
+                    "title": "Value"
+                },
+                "description": "Array of Value",
+                "title": "Value"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "entity",
+            "field_name"
+        ]
+    }
+}

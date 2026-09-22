@@ -1,0 +1,11 @@
+{
+  "name": "drupalmcp-adk-example",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "adk web agents" },
+  "dependencies": {
+    "@drupalmcp/adk": "*",
+    "@google/adk": "^2.1.0",
+    "@google/adk-devtools": "^2.1.0"
+  }
+}
