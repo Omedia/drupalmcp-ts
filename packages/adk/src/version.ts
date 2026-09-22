@@ -1,2 +1,2 @@
-/** Kept in step with package.json by the build. */
-export const VERSION = '0.1.0-alpha.1';
+/** Kept in step with package.json; sent as the user agent. */
+export const VERSION = '0.1.0';
